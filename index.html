@@ -6,7 +6,21 @@
 </head>
 
 <body>
-  <iframe width="1280" height="1024" src="http://10.16.12.122:8000/" frameborder="0" allowfullscreen></iframe>
+  <iframe id="myiframe" title="buttons" width="1920" height="1080" src="http://localhost:8080" frameborder="0" allowfullscreen></iframe>
+	<button onClick="testing()">CLEEK ME!!!</button>
 </body>
+
+<script>
+  const logMessage = ({ data }) => { console.log(data) }
+
+	window.addEventListener('message', logMessage)
+	
+	testing = () =>{
+		let data = {}
+  }
+
+	document.getElementById('myiframe').contentWindow.postMessage({type: 'SETUP', payload: data}, "*")
+
+</script>
 </html>
 
