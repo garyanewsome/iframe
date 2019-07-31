@@ -1,26 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-</head>
+  <head>
+    <meta charset="utf-8" />
+  </head>
 
-<body>
-  <iframe id="myiframe" title="buttons" width="1920" height="1080" src="http://localhost:8080" frameborder="0" allowfullscreen></iframe>
-	<button onClick="testing()">CLEEK ME!!!</button>
-</body>
+  <body>
+    <iframe
+      id="myiframe"
+      title="buttons"
+      width="1920"
+      height="1080"
+      src="http://localhost:8080"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+    <button style="position:absolute;top:16px;right:16px;" onClick="testing()">
+      CLEEK ME!!!
+    </button>
 
-<script>
-  const logMessage = ({ data }) => { console.log(data) }
+    <script>
+      const logMessage = ({ data }) => {
+        console.log(data, "HTML DATA")
+      }
 
-	window.addEventListener('message', logMessage)
-	
-	testing = () =>{
-		let data = {}
-  }
+      window.addEventListener("message", logMessage)
 
-	document.getElementById('myiframe').contentWindow.postMessage({type: 'SETUP', payload: data}, "*")
+      let data
 
-</script>
+      const testing = () => {
+        console.log("CLEEK!")
+        data = {
+          slide: {},
+          settings: {
+            slide: {},
+            colors: {
+              backgroundColorOne: "rgba(158, 74, 218, 1.0)",
+              backgroundColorTwo: "rgba(183, 44, 251, 1.0)",
+              headlineColor: "rgba(255, 255, 0, 1.0)",
+              descriptionColor: "rgba(75, 13, 39, 1.0)"
+            },
+            data: []
+          }
+        }
+        console.log(data, "html")
+        document
+          .getElementById("myiframe")
+          .contentWindow.postMessage(
+            { type: "__dashboardLivePreviewChange", payload: data },
+            "*"
+          )
+      }
+    </script>
+  </body>
 </html>
-
